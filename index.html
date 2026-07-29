@@ -1,31 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Global NFT App</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <style>
-    body { font-family: Arial; padding: 20px; text-align: center; background: var(--tg-theme-bg-color, #f4f4f9); color: var(--tg-theme-text-color, #000); }
-    .nft-card { background: var(--tg-theme-secondary-bg-color, white); padding: 15px; margin: 10px auto; width: 80%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    button { background: #4CAF50; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global NFT Collection</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--tg-theme-bg-color, #ffffff);
+            color: var(--tg-theme-text-color, #000000);
+            margin: 0;
+            padding: 16px;
+        }
+        h1 {
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nft-card {
+            background: var(--tg-theme-secondary-bg-color, #f1f1f1);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nft-info h3 {
+            margin: 0 0 4px 0;
+            font-size: 16px;
+        }
+        .nft-info p {
+            margin: 0;
+            font-size: 14px;
+            color: #888;
+        }
+        .buy-btn {
+            background-color: var(--tg-theme-button-color, #2481cc);
+            color: var(--tg-theme-button-text-color, #ffffff);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <h1>Global NFT Collection</h1>
-  <div id="nft-list">Loading...</div>
 
-  <script>
-    // Initialize Telegram Web App
-    window.Telegram.WebApp.ready();
+    <h1>Global NFT Collection</h1>
+    
+    <div id="app">
+        <div class="nft-card">
+            <div class="nft-info">
+                <h3>Cyber Ape #001</h3>
+                <p>Price: 1.5 ETH</p>
+            </div>
+            <button class="buy-btn" onclick="alert('NFT Purchased!')">Buy</button>
+        </div>
 
-    fetch('/api/nfts')
-      .then(res => res.json())
-      .then(data => {
-        const c = document.getElementById('nft-list');
-        c.innerHTML = '';
-        data.forEach(n => {
-          c.innerHTML += `<div class="nft-card"><h3>${n.name}</h3><p>Price: ${n.price}</p><button onclick="alert('Purchased ${n.name}!')">Buy Now</button></div>`;
-        });
-      });
-  </script>
+        <div class="nft-card">
+            <div class="nft-info">
+                <h3>Cosmic Punk #404</h3>
+                <p>Price: 0.8 ETH</p>
+            </div>
+            <button class="buy-btn" onclick="alert('NFT Purchased!')">Buy</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Telegram Web App SDK safely
+        window.Telegram.WebApp.ready();
+        window.Telegram.WebApp.expand();
+    </script>
 </body>
 </html>
