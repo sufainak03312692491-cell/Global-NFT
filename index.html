@@ -4,7 +4,8 @@
   <title>Global NFT App</title>
   <style>
     body { font-family: Arial; padding: 20px; text-align: center; background: #f4f4f9; }
-    .nft-card { background: white; padding: 15px; margin: 10px auto; width: 80%; border-radius: 8px; }
+    .nft-card { background: white; padding: 15px; margin: 10px auto; width: 80%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    button { background: #4CAF50; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -18,8 +19,7 @@
         const c = document.getElementById('nft-list');
         c.innerHTML = '';
         data.forEach(n => {
-                      c.innerHTML += `<div class="nft-card"><h3>${n.name}</h3><p>${n.price}</p></div>`;
-
+            c.innerHTML += `<div class="nft-card"><h3>${n.name}</h3><p>Price: ${n.price}</p><button onclick="alert('Purchased ${n.name}!')">Buy Now</button></div>`;
         });
       });
   </script>
