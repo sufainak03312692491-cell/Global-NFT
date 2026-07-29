@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/nfts", "destination": "/api/nfts.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
