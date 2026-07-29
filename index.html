@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Global NFT</title>
+  <title>Global NFT App</title>
+  <style>
+    body { font-family: Arial; padding: 20px; text-align: center; background: #f4f4f9; }
+    .nft-card { background: white; padding: 15px; margin: 10px auto; width: 80%; border-radius: 8px; }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Global NFT</h1>
-    <p>Balance: $0.00</p>
-    <button>Start Task</button>
+  <h1>Global NFT Collection</h1>
+  <div id="nft-list">Loading...</div>
+
+  <script>
+    fetch('/api/nfts')
+      .then(res => res.json())
+      .then(data => {
+        const c = document.getElementById('nft-list');
+        c.innerHTML = '';
+        data.forEach(n => {
+                      c.innerHTML += `<div class="nft-card"><h3>${n.name}</h3><p>${n.price}</p></div>`;
+
+        });
+      });
+  </script>
 </body>
 </html>
