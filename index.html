@@ -1,72 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global NFT Platform</title>
-    <style>
-        body { background: #050505; color: #fff; font-family: sans-serif; margin: 0; padding: 16px; }
-        .card { max-width: 360px; margin: 40px auto; background: #121212; border: 1px solid #333; border-radius: 16px; padding: 20px; }
-        h2 { text-align: center; color: #d4af37; font-size: 20px; margin-bottom: 4px; }
-        p { text-align: center; font-size: 11px; color: #888; margin-bottom: 20px; }
-        label { display: block; font-size: 11px; color: #aaa; margin-bottom: 4px; }
-        input { width: 100%; padding: 12px; background: #0d1117; border: 1px solid #333; color: #fff; border-radius: 8px; margin-bottom: 12px; box-sizing: border-box; font-size: 13px; }
-        .row { display: flex; gap: 8px; }
-        button.btn-green { background: #238636; color: #fff; border: none; padding: 0 14px; border-radius: 8px; font-weight: bold; cursor: pointer; height: 43px; }
-        button.btn-gold { background: linear-gradient(135deg, #dfbc52, #be912c); color: #000; border: none; width: 100%; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px; margin-top: 8px; }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <h2>SECURE REGISTRATION</h2>
-        <p>Tap Get Code to receive your verification code</p>
-        
-        <label>Username</label>
-        <input type="text" id="u" placeholder="Enter username">
+<script>
+let generatedCode = "";
 
-        <label>Gmail Address</label>
-        <div class="row">
-            <input type="email" id="e" placeholder="name@gmail.com">
-            <button type="button" class="btn-green" onclick="getCode()">Get Code</button>
-        </div>
+function getCode() {
 
-        <label>Verification Code <span id="code-show" style="color:#d4af37; font-weight:bold;"></span></label>
-        <input type="text" id="c" placeholder="Enter 4-digit code">
+    let emailField = document.getElementById("e").value.trim();
 
-        <label>Password</label>
-        <input type="password" id="p" placeholder="Create password">
+    if (!emailField || !emailField.includes("@gmail.com")) {
+        alert("Please enter a valid Gmail address.");
+        return;
+    }
 
-        <button type="button" class="btn-gold" onclick="register()">Complete Registration</button>
-    </div>
+    generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
 
-    <script>
-        let generatedCode = "";
-        function getCode() {
-            let emailField = document.getElementById('e').value.trim();
-            if(!emailField || !emailField.includes('@')) {
-                alert('Please enter a valid Gmail address first.');
-                return;
-            }
-            generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
-            document.getElementById('code-show.innerText = `(Code: ${generatedCode})`;
-            alert('Verification Code Generated Successfully: ' + generatedCode);
-        }
+    document.getElementById("code-show").innerText = "(Code: " + generatedCode + ")";
 
-        function register() {
-            let user = document.getElementById('u').value.trim();
-            let codeInput = document.getElementById('c').value.trim();
-            let pass = document.getElementById('p').value.trim();
+    alert("Verification Code Generated Successfully: " + generatedCode);
+}
 
-            if(!user || !codeInput || !pass) {
-                alert('Please fill out all fields.');
-                return;
-            }
-            if(codeInput !== generatedCode) {
-                alert('Incorrect verification code! Click Get Code first.');
-                return;
-            }
-            alert('Registration Successful! Account created.');
-        }
-    </script>
-</body>
-</html>
+function register() {
+
+    let user = document.getElementById("u").value.trim();
+    let codeInput = document.getElementById("c").value.trim();
+    let pass = document.getElementById("p").value.trim();
+
+    if (!user || !codeInput || !pass) {
+        alert("Please fill out all fields.");
+        return;
+    }
+
+    if (codeInput !== generatedCode) {
+        alert("Incorrect verification code! Click Get Code first.");
+        return;
+    }
+
+    alert("Registration Successful! Account created.");
+}
+</script>
