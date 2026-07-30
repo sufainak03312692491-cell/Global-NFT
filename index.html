@@ -3,481 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global NFT Platform - Authentic Registration</title>
+    <title>Global NFT Platform</title>
     <style>
-        :root {
-            --bg-color: #050505;
-            --card-bg: #121212;
-            --card-border: #222222;
-            --gold-primary: #d4af37;
-            --gold-gradient: linear-gradient(135deg, #bf953f, #fbf5b7, #b38728, #fbf5b7, #aa771c);
-            --gold-btn-gradient: linear-gradient(135deg, #dfbc52 0%, #be912c 100%);
-            --text-main: #ffffff;
-            --text-sub: #9ca3af;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 12px;
-            padding-bottom: 90px;
-        }
-
-        .screen { display: none; }
-        .screen.active { display: block; }
-
-        .auth-container {
-            max-width: 380px;
-            margin: 20px auto;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .auth-logo {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 8px;
-        }
-        .auth-title {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 800;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 4px;
-        }
-        .auth-subtitle {
-            text-align: center;
-            font-size: 11px;
-            color: var(--text-sub);
-            margin-bottom: 16px;
-        }
-        .input-group {
-            margin-bottom: 12px;
-        }
-        .input-group label {
-            display: block;
-            font-size: 11px;
-            color: var(--text-sub);
-            margin-bottom: 4px;
-        }
-        .input-field {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid var(--card-border);
-            background: #0d1117;
-            color: #fff;
-            box-sizing: border-box;
-            font-size: 13px;
-        }
-        .input-field:focus {
-            border-color: var(--gold-primary);
-            outline: none;
-        }
-        .row-inline {
-            display: flex;
-            gap: 8px;
-        }
-        .get-code-btn {
-            background: #238636;
-            color: #fff;
-            border: none;
-            padding: 0 14px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 11px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        .get-code-btn:active { opacity: 0.8; }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            padding: 0 4px;
-        }
-        .brand-box {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .brand-logo {
-            width: 32px;
-            height: 32px;
-            background: var(--gold-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #000;
-            font-size: 16px;
-        }
-        .brand-title h1 {
-            margin: 0;
-            font-size: 16px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-        .brand-title span {
-            font-size: 9px;
-            color: var(--text-sub);
-            text-transform: uppercase;
-        }
-        .hero-banner {
-            background: linear-gradient(135deg, #16140f 0%, #1c1810 50%, #111 100%);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .hero-content h2 {
-            margin: 0 0 4px 0;
-            font-size: 18px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-        .hero-content p {
-            margin: 0;
-            font-size: 11px;
-            color: var(--text-sub);
-        }
-        .wallet-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-        }
-        .wallet-info span { font-size: 12px; color: var(--text-sub); }
-        .wallet-info h2 { margin: 4px 0; font-size: 24px; font-weight: 700; color: var(--text-main); }
-        .recharge-btn {
-            background: var(--gold-btn-gradient);
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-        }
-        .feature-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 14px;
-            margin-bottom: 14px;
-        }
-        .action-btn {
-            background: var(--gold-btn-gradient);
-            color: #000;
-            border: none;
-            padding: 14px;
-            border-radius: 10px;
-            font-weight: bold;
-            width: 100%;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .action-btn:active { opacity: 0.8; }
-        .nft-image-box {
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(135deg, #1a1810, #0d0d0d);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        .nft-badge {
-            position: absolute;
-            top: 8px; right: 8px;
-            background: rgba(212, 175, 55, 0.2);
-            border: 1px solid var(--gold-primary);
-            color: var(--gold-primary);
-            font-size: 10px;
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-weight: bold;
-        }
-        .search-status {
-            text-align: center;
-            font-size: 12px;
-            color: var(--gold-primary);
-            margin: 8px 0;
-            font-weight: 600;
-        }
-        .nav-bar {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background: #0d0d0d; border-top: 1px solid var(--card-border);
-            display: flex; justify-content: space-around; padding: 8px 0; z-index: 100;
-        }
-        .nav-item {
-            background: none; border: none; color: var(--text-sub);
-            font-size: 10px; display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer;
-        }
-        .nav-item.active { color: var(--gold-primary); }
-        .section-view { display: none; }
-        .section-view.active { display: block; }
-        .auth-switch {
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-sub);
-            margin-top: 14px;
-            cursor: pointer;
-        }
-        .auth-switch span { color: var(--gold-primary); font-weight: bold; text-decoration: underline; }
+        body { background: #050505; color: #fff; font-family: sans-serif; margin: 0; padding: 16px; }
+        .card { max-width: 360px; margin: 40px auto; background: #121212; border: 1px solid #333; border-radius: 16px; padding: 20px; }
+        h2 { text-align: center; color: #d4af37; font-size: 20px; margin-bottom: 4px; }
+        p { text-align: center; font-size: 11px; color: #888; margin-bottom: 20px; }
+        label { display: block; font-size: 11px; color: #aaa; margin-bottom: 4px; }
+        input { width: 100%; padding: 12px; background: #0d1117; border: 1px solid #333; color: #fff; border-radius: 8px; margin-bottom: 12px; box-sizing: border-box; font-size: 13px; }
+        .row { display: flex; gap: 8px; }
+        button.btn-green { background: #238636; color: #fff; border: none; padding: 0 14px; border-radius: 8px; font-weight: bold; cursor: pointer; height: 43px; }
+        button.btn-gold { background: linear-gradient(135deg, #dfbc52, #be912c); color: #000; border: none; width: 100%; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px; margin-top: 8px; }
     </style>
 </head>
 <body>
+    <div class="card">
+        <h2>SECURE REGISTRATION</h2>
+        <p>Tap Get Code to receive your verification code</p>
+        
+        <label>Username</label>
+        <input type="text" id="u" placeholder="Enter username">
 
-    <!-- Authentication Screen -->
-    <div id="screen-auth" class="screen active">
-        <div class="auth-container">
-            <div class="auth-logo">🌐</div>
-            <div class="auth-title" id="auth-main-title">SECURE REGISTRATION</div>
-            <div class="auth-subtitle" id="auth-sub-title">Each Gmail can only be registered once securely</div>
-
-            <!-- Registration Form -->
-            <div id="form-register-box">
-                <div class="input-group">
-                    <label>Username</label>
-                    <input type="text" id="reg-username" class="input-field" placeholder="Enter username">
-                </div>
-                <div class="input-group">
-                    <label>Gmail Address (Unique restriction check)</label>
-                    <div class="row-inline">
-                        <input type="email" id="reg-email" class="input-field" placeholder="name@gmail.com">
-                        <button type="button" class="get-code-btn" id="btn-get-code">Get Code</button>
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label>Verification Code <span id="code-hint-display" style="color:var(--gold-primary); font-weight:bold;"></span></label>
-                    <input type="text" id="reg-code" class="input-field" placeholder="Enter 4-digit code">
-                </div>
-                <div class="input-group">
-                    <label>Secure Password</label>
-                    <input type="password" id="reg-password" class="input-field" placeholder="Create strong password">
-                </div>
-                <button type="button" class="action-btn" id="btn-register" style="margin-top: 6px;">Complete Registration</button>
-                <div class="auth-switch" id="switch-to-login">Already have an account? <span>Login here</span></div>
-            </div>
-
-            <!-- Login Form -->
-            <div id="form-login-box" style="display:none;">
-                <div class="input-group">
-                    <label>Registered Gmail Address</label>
-                    <input type="email" id="login-email" class="input-field" placeholder="name@gmail.com">
-                </div>
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" id="login-password" class="input-field" placeholder="Enter password">
-                </div>
-                <button type="button" class="action-btn" id="btn-login" style="margin-top: 6px;">Secure Login</button>
-                <div class="auth-switch" id="switch-to-register">New user? <span>Register now</span></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Dashboard Screen -->
-    <div id="screen-dashboard" class="screen">
-        <div class="header">
-            <div class="brand-box">
-                <div class="brand-logo">🌐</div>
-                <div class="brand-title">
-                    <h1>GLOBAL NFT</h1>
-                    <span>SECURE PLATFORM</span>
-                </div>
-            </div>
-            <div style="font-size: 11px; color: var(--gold-primary);" id="display-username">Trader</div>
+        <label>Gmail Address</label>
+        <div class="row">
+            <input type="email" id="e" placeholder="name@gmail.com">
+            <button type="button" class="btn-green" onclick="getCode()">Get Code</button>
         </div>
 
-        <div id="view-home" class="section-view active">
-            <div class="hero-banner">
-                <div class="hero-content">
-                    <h2>GLOBAL NFT</h2>
-                    <p>EARN MORE. OWN MORE. BUILD YOUR FUTURE.</p>
-                </div>
-                <div style="font-size: 36px;">🪙</div>
-            </div>
+        <label>Verification Code <span id="code-show" style="color:#d4af37; font-weight:bold;"></span></label>
+        <input type="text" id="c" placeholder="Enter 4-digit code">
 
-            <div class="wallet-card">
-                <div class="wallet-info">
-                    <span>Total Balance (USDT)</span>
-                    <h2 id="user-balance">$100.00</h2>
-                </div>
-                <button type="button" class="recharge-btn" id="nav-btn-recharge">Recharge</button>
-            </div>
+        <label>Password</label>
+        <input type="password" id="p" placeholder="Create password">
 
-            <div class="feature-card">
-                <h3>Daily Smart Tasks</h3>
-                <p style="font-size: 11px; color: var(--text-sub);">Complete daily Global NFT operations to earn yields.</p>
-                <button type="button" class="action-btn" style="padding:10px;" id="nav-btn-gotasks">Go to Tasks</button>
-            </div>
-        </div>
-
-        <div id="view-deposit" class="section-view">
-            <div class="feature-card">
-                <h3>📥 Deposit USDT (TRC-20)</h3>
-                <p style="font-size:11px; color:var(--text-sub);">Deposit min $50 to unlock work tasks and activate withdrawals.</p>
-                <div style="background: #090909; padding: 10px; border-radius: 8px; font-size: 11px; color: var(--gold-primary); margin-bottom: 10px; word-break: break-all;">
-                    T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb
-                </div>
-                <input type="number" id="dep-amount" class="input-field" placeholder="Deposit Amount ($ min 50)" style="margin-bottom:10px;">
-                <input type="text" id="dep-txid" class="input-field" placeholder="Transaction Hash (TxID)" style="margin-bottom:10px;">
-                <button type="button" class="action-btn" id="btn-submit-deposit">Confirm Deposit ($50+)</button>
-            </div>
-        </div>
-
-        <div id="view-tasks" class="section-view">
-            <div class="feature-card">
-                <h3>🖼️ Global NFT Smart Miner</h3>
-                <p style="font-size:11px; color:var(--text-sub);">Search and trade Global NFT to lock fixed profit.</p>
-                
-                <div class="nft-image-box" id="nft-box-icon">
-                    👑
-                    <div class="nft-badge">Global NFT</div>
-                </div>
-                <div class="search-status" id="search-status-text">Ready to start search task</div>
-                <button type="button" class="action-btn" id="nft-action-btn">Start NFT Task (Search & Buy)</button>
-            </div>
-        </div>
-
-        <div id="view-wallet" class="section-view">
-            <div class="feature-card">
-                <h3>📤 Request Withdrawal</h3>
-                <p style="font-size:11px; color:var(--text-sub);">Funds locked for 15 days after deposit. Admin approval required.</p>
-                <div id="timer-display" style="font-size:11px; color:var(--gold-primary); margin-bottom:10px; text-align:center;">Checking status...</div>
-                <input type="number" id="wd-amount" class="input-field" placeholder="Withdraw Amount ($ min 50)" style="margin-bottom:10px;">
-                <input type="text" id="wd-address" class="input-field" placeholder="TRC20 Wallet Address" style="margin-bottom:10px;">
-                <button type="button" class="action-btn" id="withdraw-submit-btn" style="background:#238636; color:#fff;" disabled>Withdraw Locked</button>
-            </div>
-        </div>
-
-        <div id="view-profile" class="section-view">
-            <div class="feature-card">
-                <h3>👤 Secure Account Profile</h3>
-                <p style="font-size:12px; color:var(--text-sub);">Username: <span id="prof-name">-</span></p>
-                <p style="font-size:12px; color:var(--text-sub);">Verified Email: <span id="prof-email">-</span></p>
-                <p style="font-size:12px; color:var(--text-sub);">Deposit Status: <span id="prof-dep">No deposit</span></p>
-                <button type="button" class="action-btn" style="background:#b91c1c; color:#fff; margin-top:14px;" id="btn-logout">Secure Logout</button>
-            </div>
-        </div>
-
-        <div class="nav-bar">
-            <button type="button" class="nav-item active" id="nav-home-btn"><span>🏠</span><span>Home</span></button>
-            <button type="button" class="nav-item" id="nav-tasks-btn"><span>📋</span><span>Tasks</span></button>
-            <button type="button" class="nav-item" id="nav-deposit-btn"><span>📥</span><span>Deposit</span></button>
-            <button type="button" class="nav-item" id="nav-wallet-btn"><span>📤</span><span>Withdraw</span></button>
-            <button type="button" class="nav-item" id="nav-profile-btn"><span>👤</span><span>Profile</span></button>
-        </div>
+        <button type="button" class="btn-gold" onclick="register()">Complete Registration</button>
     </div>
 
     <script>
-        let currentVerificationCode = "";
-        let currentUser = null;
-
-        function toggleAuthMode(mode) {
-            if(mode === 'login') {
-                document.getElementById('form-register-box').style.display = 'none';
-                document.getElementById('form-login-box').style.display = 'block';
-                document.getElementById('auth-main-title').innerText = 'SECURE LOGIN';
-                document.getElementById('auth-sub-title').innerText = 'Access your registered account safely';
-            } else {
-                document.getElementById('form-login-box').style.display = 'none';
-                document.getElementById('form-register-box').style.display = 'block';
-                document.getElementById('auth-main-title').innerText = 'SECURE REGISTRATION';
-                document.getElementById('auth-sub-title').innerText = 'Each Gmail can only be registered once securely';
-            }
-        }
-
-        function sendSecureCode() {
-            const emailInput = document.getElementById('reg-email');
-            const email = emailInput ? emailInput.value.trim().toLowerCase() : "";
-            
-            if(!email || !email.includes('@gmail.com')) {
+        let generatedCode = "";
+        function getCode() {
+            let emailField = document.getElementById('e').value.trim();
+            if(!emailField || !emailField.includes('@')) {
                 alert('Please enter a valid Gmail address first.');
                 return;
             }
-
-            let existingUsers = JSON.parse(localStorage.getItem('global_nft_users') || "{}");
-            if(existingUsers[email]) {
-                alert('Security Error: This Gmail address is already registered! Please log in instead.');
-                toggleAuthMode('login');
-                return;
-            }
-
-            currentVerificationCode = Math.floor(1000 + Math.random() * 9000).toString();
-            document.getElementById('code-hint-display').innerText = `(Code: ${currentVerificationCode})`;
-            alert(`[Verification System]: Code sent to ${email}. Code: ${currentVerificationCode}`);
+            generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
+            document.getElementById('code-show.innerText = `(Code: ${generatedCode})`;
+            alert('Verification Code Generated Successfully: ' + generatedCode);
         }
 
-        function registerUser() {
-            const username = document.getElementById('reg-username').value.trim();
-            const email = document.getElementById('reg-email').value.trim().toLowerCase();
-            const code = document.getElementById('reg-code').value.trim();
-            const password = document.getElementById('reg-password').value.trim();
+        function register() {
+            let user = document.getElementById('u').value.trim();
+            let codeInput = document.getElementById('c').value.trim();
+            let pass = document.getElementById('p').value.trim();
 
-            if(!username || !email || !code || !password) {
-                alert('Please fill out all required fields.');
+            if(!user || !codeInput || !pass) {
+                alert('Please fill out all fields.');
                 return;
             }
-
-            if(code !== currentVerificationCode) {
-                alert('Invalid verification code entered.');
+            if(codeInput !== generatedCode) {
+                alert('Incorrect verification code! Click Get Code first.');
                 return;
             }
-
-            let existingUsers = JSON.parse(localStorage.getItem('global_nft_users') || "{}");
-            if(existingUsers[email]) {
-                alert('Error: This Gmail is already registered in system database.');
-                return;
-            }
-
-            existingUsers[email] = {
-                username: username,
-                password: password,
-                email: email,
-                balance: 100.00,
-                isDeposited: false,
-                depositTime: null
-            };
-            localStorage.setItem('global_nft_users', JSON.stringify(existingUsers));
-
-            alert('Registration successful! You can now log in securely.');
-            toggleAuthMode('login');
+            alert('Registration Successful! Account created.');
         }
-
-        function loginUser() {
-            const email = document.getElementById('login-email').value.trim().toLowerCase();
-            const password = document.getElementById('login-password').value.trim();
-
-            let existingUsers = JSON.parse(localStorage.getItem('global_nft_users') || "{}");
-            if(!existingUsers[email] || existingUsers[email].password !== password) {
-                alert('Invalid Gmail address or password.');
-                return;
-            }
-
-            currentUser = existing
+    </script>
+</body>
+</html>
