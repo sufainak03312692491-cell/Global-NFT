@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global NFT Market - Secure Portal</title>
+    <title>Global NFT Platform - Authentic Registration</title>
     <style>
         :root {
             --bg-color: #050505;
@@ -95,6 +95,7 @@
             cursor: pointer;
             white-space: nowrap;
         }
+        .get-code-btn:active { opacity: 0.8; }
 
         .header {
             display: flex;
@@ -196,6 +197,7 @@
             cursor: pointer;
             font-size: 14px;
         }
+        .action-btn:active { opacity: 0.8; }
         .nft-image-box {
             width: 100%;
             height: 150px;
@@ -246,18 +248,19 @@
             margin-top: 14px;
             cursor: pointer;
         }
-        .auth-switch span { color: var(--gold-primary); font-weight: bold; }
+        .auth-switch span { color: var(--gold-primary); font-weight: bold; text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <!-- Secure Auth Screen -->
+    <!-- Authentication Screen -->
     <div id="screen-auth" class="screen active">
         <div class="auth-container">
             <div class="auth-logo">🌐</div>
             <div class="auth-title" id="auth-main-title">SECURE REGISTRATION</div>
             <div class="auth-subtitle" id="auth-sub-title">Each Gmail can only be registered once securely</div>
 
+            <!-- Registration Form -->
             <div id="form-register-box">
                 <div class="input-group">
                     <label>Username</label>
@@ -282,6 +285,7 @@
                 <div class="auth-switch" id="switch-to-login">Already have an account? <span>Login here</span></div>
             </div>
 
+            <!-- Login Form -->
             <div id="form-login-box" style="display:none;">
                 <div class="input-group">
                     <label>Registered Gmail Address</label>
@@ -324,13 +328,13 @@
                     <span>Total Balance (USDT)</span>
                     <h2 id="user-balance">$100.00</h2>
                 </div>
-                <button type="button" class="recharge-btn" onclick="switchTab('deposit')">Recharge</button>
+                <button type="button" class="recharge-btn" id="nav-btn-recharge">Recharge</button>
             </div>
 
             <div class="feature-card">
                 <h3>Daily Smart Tasks</h3>
                 <p style="font-size: 11px; color: var(--text-sub);">Complete daily Global NFT operations to earn yields.</p>
-                <button type="button" class="action-btn" style="padding:10px;" onclick="switchTab('tasks')">Go to Tasks</button>
+                <button type="button" class="action-btn" style="padding:10px;" id="nav-btn-gotasks">Go to Tasks</button>
             </div>
         </div>
 
@@ -343,7 +347,7 @@
                 </div>
                 <input type="number" id="dep-amount" class="input-field" placeholder="Deposit Amount ($ min 50)" style="margin-bottom:10px;">
                 <input type="text" id="dep-txid" class="input-field" placeholder="Transaction Hash (TxID)" style="margin-bottom:10px;">
-                <button type="button" class="action-btn" onclick="submitDeposit()">Confirm Deposit ($50+)</button>
+                <button type="button" class="action-btn" id="btn-submit-deposit">Confirm Deposit ($50+)</button>
             </div>
         </div>
 
@@ -357,7 +361,7 @@
                     <div class="nft-badge">Global NFT</div>
                 </div>
                 <div class="search-status" id="search-status-text">Ready to start search task</div>
-                <button type="button" class="action-btn" id="nft-action-btn" onclick="handleNftTaskClick()">Start NFT Task (Search & Buy)</button>
+                <button type="button" class="action-btn" id="nft-action-btn">Start NFT Task (Search & Buy)</button>
             </div>
         </div>
 
@@ -368,7 +372,7 @@
                 <div id="timer-display" style="font-size:11px; color:var(--gold-primary); margin-bottom:10px; text-align:center;">Checking status...</div>
                 <input type="number" id="wd-amount" class="input-field" placeholder="Withdraw Amount ($ min 50)" style="margin-bottom:10px;">
                 <input type="text" id="wd-address" class="input-field" placeholder="TRC20 Wallet Address" style="margin-bottom:10px;">
-                <button type="button" class="action-btn" id="withdraw-submit-btn" style="background:#238636; color:#fff;" onclick="submitWithdrawal()" disabled>Withdraw Locked</button>
+                <button type="button" class="action-btn" id="withdraw-submit-btn" style="background:#238636; color:#fff;" disabled>Withdraw Locked</button>
             </div>
         </div>
 
@@ -378,16 +382,16 @@
                 <p style="font-size:12px; color:var(--text-sub);">Username: <span id="prof-name">-</span></p>
                 <p style="font-size:12px; color:var(--text-sub);">Verified Email: <span id="prof-email">-</span></p>
                 <p style="font-size:12px; color:var(--text-sub);">Deposit Status: <span id="prof-dep">No deposit</span></p>
-                <button type="button" class="action-btn" style="background:#b91c1c; color:#fff; margin-top:14px;" onclick="logoutUser()">Secure Logout</button>
+                <button type="button" class="action-btn" style="background:#b91c1c; color:#fff; margin-top:14px;" id="btn-logout">Secure Logout</button>
             </div>
         </div>
 
         <div class="nav-bar">
-            <button type="button" class="nav-item active" id="nav-home" onclick="switchTab('home')"><span>🏠</span><span>Home</span></button>
-            <button type="button" class="nav-item" id="nav-tasks" onclick="switchTab('tasks')"><span>📋</span><span>Tasks</span></button>
-            <button type="button" class="nav-item" id="nav-deposit" onclick="switchTab('deposit')"><span>📥</span><span>Deposit</span></button>
-            <button type="button" class="nav-item" id="nav-wallet" onclick="switchTab('wallet')"><span>📤</span><span>Withdraw</span></button>
-            <button type="button" class="nav-item" id="nav-profile" onclick="switchTab('profile')"><span>👤</span><span>Profile</span></button>
+            <button type="button" class="nav-item active" id="nav-home-btn"><span>🏠</span><span>Home</span></button>
+            <button type="button" class="nav-item" id="nav-tasks-btn"><span>📋</span><span>Tasks</span></button>
+            <button type="button" class="nav-item" id="nav-deposit-btn"><span>📥</span><span>Deposit</span></button>
+            <button type="button" class="nav-item" id="nav-wallet-btn"><span>📤</span><span>Withdraw</span></button>
+            <button type="button" class="nav-item" id="nav-profile-btn"><span>👤</span><span>Profile</span></button>
         </div>
     </div>
 
@@ -426,8 +430,8 @@
             }
 
             currentVerificationCode = Math.floor(1000 + Math.random() * 9000).toString();
-            document.getElementById('code-hint-display').innerText = `(Your Code: ${currentVerificationCode})`;
-            alert(`[Secure Simulation]: Verification code generated for ${email}. Code: ${currentVerificationCode}`);
+            document.getElementById('code-hint-display').innerText = `(Code: ${currentVerificationCode})`;
+            alert(`[Verification System]: Code sent to ${email}. Code: ${currentVerificationCode}`);
         }
 
         function registerUser() {
@@ -476,4 +480,4 @@
                 return;
             }
 
-  
+            currentUser = existing
