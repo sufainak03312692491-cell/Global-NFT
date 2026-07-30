@@ -11,7 +11,6 @@
             --card-bg: #121212;
             --card-border: #222222;
             --gold-primary: #d4af37;
-            --gold-light: #f3e5ab;
             --gold-gradient: linear-gradient(135deg, #bf953f, #fbf5b7, #b38728, #fbf5b7, #aa771c);
             --gold-btn-gradient: linear-gradient(135deg, #dfbc52 0%, #be912c 100%);
             --text-main: #ffffff;
@@ -27,7 +26,166 @@
             padding-bottom: 90px;
         }
 
-        /* Top Header */
+        /* Screen States */
+        .screen { display: none; }
+        .screen.active { display: block; }
+
+        /* Login Screen Styles */
+        .login-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 90vh;
+            padding: 10px;
+        }
+        .login-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .brand-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .brand-logo-large {
+            width: 50px;
+            height: 50px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 10px auto;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        .brand-header h1 {
+            margin: 0;
+            font-size: 20px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .brand-header p {
+            margin: 4px 0 0 0;
+            font-size: 11px;
+            color: var(--text-sub);
+            letter-spacing: 0.5px;
+        }
+        .login-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+        .telegram-login-btn {
+            background-color: #229ed9;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(34, 158, 217, 0.3);
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 11px;
+            margin-bottom: 16px;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .divider::before { margin-right: 10px; }
+        .divider::after { margin-left: 10px; }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            color: var(--text-sub);
+            margin-bottom: 4px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            background: #0d1117;
+            color: #fff;
+            box-sizing: border-box;
+            font-size: 13px;
+        }
+        .input-field:focus {
+            border-color: var(--gold-primary);
+            outline: none;
+        }
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            margin-bottom: 16px;
+            color: var(--text-sub);
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        .forgot-password {
+            color: var(--gold-primary);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .signin-btn {
+            background: var(--gold-btn-gradient);
+            color: #000;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .create-account-btn {
+            background: transparent;
+            color: var(--gold-primary);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Dashboard Global Styles */
         .header {
             display: flex;
             justify-content: space-between;
@@ -79,9 +237,6 @@
             padding: 5px 10px;
             border-radius: 20px;
             font-size: 11px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
         .icon-btn {
             background: #1a1a1a;
@@ -93,18 +248,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             cursor: pointer;
-        }
-        .notification-badge::after {
-            content: '';
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            width: 6px;
-            height: 6px;
-            background-color: #ef4444;
-            border-radius: 50%;
         }
         .vip-avatar {
             display: flex;
@@ -121,7 +265,6 @@
             font-weight: bold;
         }
 
-        /* Hero Promo Card */
         .hero-banner {
             background: linear-gradient(135deg, #16140f 0%, #1c1810 50%, #111 100%);
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -131,9 +274,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
         }
         .hero-content h2 {
             margin: 0 0 4px 0;
@@ -148,25 +288,6 @@
             font-size: 11px;
             color: var(--text-sub);
             max-width: 180px;
-            line-height: 1.3;
-        }
-        .hero-globe {
-            width: 90px;
-            height: 90px;
-            background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-        }
-
-        /* Balance & Recharge Section */
-        .balance-section {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-bottom: 14px;
         }
         .wallet-card {
             background: var(--card-bg);
@@ -176,7 +297,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            margin-bottom: 14px;
         }
         .wallet-info span {
             font-size: 12px;
@@ -188,11 +309,6 @@
             font-weight: 700;
             color: var(--text-main);
         }
-        .wallet-info p {
-            margin: 0;
-            font-size: 11px;
-            color: var(--text-sub);
-        }
         .recharge-btn {
             background: var(--gold-btn-gradient);
             color: #000;
@@ -202,27 +318,8 @@
             font-weight: 700;
             font-size: 13px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
         }
 
-        /* Announcement Bar */
-        .announcement {
-            background: #141414;
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 8px 12px;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 11px;
-            color: var(--text-sub);
-        }
-        .announcement span {
-            color: var(--gold-primary);
-        }
-
-        /* Feature Cards Grid (Two Columns) */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -237,8 +334,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
-            overflow: hidden;
         }
         .feature-card h3 {
             margin: 0 0 4px 0;
@@ -249,7 +344,6 @@
             margin: 0 0 10px 0;
             font-size: 10px;
             color: var(--text-sub);
-            line-height: 1.3;
         }
         .card-btn {
             background: rgba(212, 175, 55, 0.1);
@@ -263,117 +357,59 @@
             width: fit-content;
         }
 
-        /* Quick Actions Grid (Five items) */
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-            margin-bottom: 14px;
-        }
-        .action-item {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 10px 4px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 6px;
-            cursor: pointer;
-        }
-        .action-icon {
-            width: 32px;
-            height: 32px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: var(--gold-primary);
-        }
-        .action-item span {
-            font-size: 10px;
-            color: var(--text-sub);
-            line-height: 1.1;
-        }
-
-        /* Invite Friends Card */
-        .invite-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 14px;
-            margin-bottom: 14px;
-        }
-        .invite-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        .invite-header h3 {
-            margin: 0;
-            font-size: 14px;
-        }
-        .invite-header p {
-            margin: 0;
-            font-size: 10px;
-            color: var(--text-sub);
-        }
-        .invite-btn {
+        .action-btn {
             background: var(--gold-btn-gradient);
             color: #000;
             border: none;
-            padding: 6px 14px;
+            padding: 10px;
             border-radius: 8px;
-            font-weight: 700;
-            font-size: 11px;
+            font-weight: bold;
+            width: 100%;
             cursor: pointer;
+            font-size: 14px;
         }
-        .referral-box {
-            background: #090909;
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 8px 10px;
+        .action-btn:disabled {
+            background: #333;
+            color: #777;
+            cursor: not-allowed;
+        }
+
+        /* NFT Trading / Searching Styles */
+        .nft-image-box {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #1a1810, #0d0d0d);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 12px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            font-size: 11px;
+            justify-content: center;
+            font-size: 60px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .nft-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--gold-primary);
             color: var(--gold-primary);
-        }
-
-        /* Earnings Overview Card */
-        .earnings-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 14px;
-            margin-bottom: 14px;
-        }
-        .earnings-card h3 {
-            margin: 0 0 12px 0;
-            font-size: 14px;
-        }
-        .earnings-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            text-align: center;
-            border-top: 1px solid var(--card-border);
-            padding-top: 10px;
-        }
-        .earning-item span {
             font-size: 10px;
-            color: var(--text-sub);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: bold;
         }
-        .earning-item h4 {
-            margin: 4px 0 0 0;
-            font-size: 14px;
-            font-weight: 700;
+        .search-status {
+            text-align: center;
+            font-size: 12px;
+            color: var(--gold-primary);
+            margin: 8px 0;
+            min-height: 18px;
+            font-weight: 600;
         }
 
-        /* Bottom Navigation Bar */
         .nav-bar {
             position: fixed;
             bottom: 0;
@@ -400,194 +436,150 @@
         .nav-item.active {
             color: var(--gold-primary);
         }
-        .nav-center-btn {
-            width: 44px;
-            height: 44px;
-            background: var(--gold-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: -18px;
-            border: 3px solid #050505;
-            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
-        }
-        .nav-center-btn span {
-            font-size: 20px;
-            color: #000;
-        }
-
-        /* Sections handling */
         .section-view { display: none; }
         .section-view.active { display: block; }
     </style>
 </head>
 <body>
 
-    <!-- TOP HEADER -->
-    <div class="header">
-        <div class="brand-box">
-            <div class="brand-logo">🌐</div>
-            <div class="brand-title">
-                <h1>GLOBAL NFT</h1>
-                <span>BUILD TODAY, EARN TOMORROW</span>
-            </div>
-        </div>
-        <div class="header-actions">
-            <div class="lang-selector">🌐 English ▾</div>
-            <div class="icon-btn notification-badge">🔔</div>
-            <div class="vip-avatar">
-                <span>VIP1</span>
-                <span style="font-size:8px;">👤</span>
+    <!-- 1. LOGIN SCREEN -->
+    <div id="screen-login" class="screen active">
+        <div class="login-wrapper">
+            <div class="login-container">
+                <div class="brand-header">
+                    <div class="brand-logo-large">🌐</div>
+                    <h1>GLOBAL NFT</h1>
+                    <p>BUILD TODAY, EARN TOMORROW</p>
+                </div>
+
+                <div class="login-title">Welcome Back</div>
+
+                <button class="telegram-login-btn" onclick="handleLoginSuccess()">
+                    <span>🔵</span> Login with Telegram
+                </button>
+
+                <div class="divider">or sign in with credentials</div>
+
+                <div class="form-group">
+                    <label>Email / Username</label>
+                    <input type="text" id="login-user" class="input-field" placeholder="Enter username or email">
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-pass" class="input-field" placeholder="Enter password">
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember"> Remember Me
+                    </label>
+                    <span class="forgot-password" onclick="alert('Password reset link sent!')">Forgot Password?</span>
+                </div>
+
+                <button class="signin-btn" onclick="handleLoginSuccess()">Sign In</button>
+                <button class="create-account-btn" onclick="alert('Opening registration portal...')">Create Account</button>
             </div>
         </div>
     </div>
 
-    <!-- HOME SECTION -->
-    <div id="view-home" class="section-view active">
-        <!-- Hero Banner -->
-        <div class="hero-banner">
-            <div class="hero-content">
-                <h2>GLOBAL NFT</h2>
-                <p>EARN MORE. OWN MORE. BUILD YOUR FUTURE.</p>
+    <!-- 2. MAIN DASHBOARD SCREENS CONTAINER -->
+    <div id="screen-dashboard" class="screen">
+        <!-- TOP HEADER -->
+        <div class="header">
+            <div class="brand-box">
+                <div class="brand-logo">🌐</div>
+                <div class="brand-title">
+                    <h1>GLOBAL NFT</h1>
+                    <span>BUILD TODAY, EARN TOMORROW</span>
+                </div>
             </div>
-            <div class="hero-globe">🪙</div>
+            <div class="header-actions">
+                <div class="lang-selector">English ▾</div>
+                <div class="icon-btn">🔔</div>
+                <div class="vip-avatar">
+                    <span>VIP1</span>
+                    <span>👤</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Wallet & Recharge -->
-        <div class="balance-section">
+        <!-- HOME SECTION -->
+        <div id="view-home" class="section-view active">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h2>GLOBAL NFT</h2>
+                    <p>EARN MORE. OWN MORE. BUILD YOUR FUTURE.</p>
+                </div>
+                <div style="font-size: 40px;">🪙</div>
+            </div>
+
             <div class="wallet-card">
                 <div class="wallet-info">
-                    <span>Total Balance(USDT)</span>
-                    <h2>12.00</h2>
-                    <p>≈ PKR 3,336.00</p>
+                    <span>Total Balance (USDT)</span>
+                    <h2 id="user-balance">$112.00</h2>
                 </div>
-                <button class="recharge-btn" onclick="alert('Redirecting to secure deposit gateway...')">Recharge</button>
+                <button class="recharge-btn" onclick="switchTab('deposit')">Recharge</button>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <div>
+                        <h3>Daily Tasks</h3>
+                        <p>Complete check-ins and earn rewards</p>
+                    </div>
+                    <button class="card-btn" onclick="switchTab('tasks')">Go Now</button>
+                </div>
+                <div class="feature-card">
+                    <div>
+                        <h3>Global NFT</h3>
+                        <p>Stake NFT Earn USDT Every day</p>
+                    </div>
+                    <button class="card-btn" onclick="switchTab('tasks')">Trade NFTs</button>
+                </div>
             </div>
         </div>
 
-        <!-- Announcement Ticker -->
-        <div class="announcement">
-            <div>📢 Congratulations to <span>***6789</span> for recommending a VIP2 member and getting reward</div>
-            <span style="cursor:pointer;" onclick="alert('Viewing announcements...')">More ></span>
-        </div>
-
-        <!-- Daily Tasks & Global NFT Stakes Grid -->
-        <div class="grid-2">
-            <div class="feature-card">
-                <div>
-                    <h3>Daily Tasks</h3>
-                    <p>Complete daily tasks and earn rewards</p>
+        <!-- DEPOSIT SECTION -->
+        <div id="view-deposit" class="section-view">
+            <div class="feature-card" style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:16px; padding:16px;">
+                <h3>📥 Deposit USDT (TRC-20)</h3>
+                <p style="font-size:11px; color:var(--text-sub);">Minimum deposit is $50.00 to activate work tasks. Includes $100 3-day bonus.</p>
+                <div style="background: #090909; padding: 10px; border-radius: 8px; font-size: 11px; word-break: break-all; color: var(--gold-primary); margin-bottom: 10px;">
+                    T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb
                 </div>
-                <button class="card-btn" onclick="switchTab('tasks')">Go Now</button>
-            </div>
-            <div class="feature-card">
-                <div>
-                    <h3>Global NFT</h3>
-                    <p>Stake NFT Earn USDT Every day</p>
-                </div>
-                <button class="card-btn" onclick="alert('Opening NFT staking pools...')">View NFTs</button>
+                <input type="number" id="dep-amount" class="input-field" placeholder="Deposit Amount ($ min 50)">
+                <input type="text" id="dep-txid" class="input-field" placeholder="Transaction Hash (TxID)">
+                <button class="action-btn" onclick="submitDeposit()">Confirm Deposit ($50+)</button>
             </div>
         </div>
 
-        <!-- Quick Actions Row -->
-        <div class="quick-actions">
-            <div class="action-item" onclick="alert('My Team Members: 0')">
-                <div class="action-icon">👥</div>
-                <span>My Team<br>0</span>
-            </div>
-            <div class="action-item" onclick="alert('Opening Team Report...')">
-                <div class="action-icon">📈</div>
-                <span>Team<br>Report</span>
-            </div>
-            <div class="action-item" onclick="alert('Opening Reward Center...')">
-                <div class="action-icon">🎁</div>
-                <span>Reward<br>Center</span>
-            </div>
-            <div class="action-item" onclick="alert('Claiming Daily Bonus...')">
-                <div class="action-icon">📅</div>
-                <span>Daily<br>Bonus</span>
-            </div>
-            <div class="action-item" onclick="alert('Downloading App package...')">
-                <div class="action-icon">📥</div>
-                <span>App<br>Download</span>
+        <!-- TASKS SECTION (NFT SEARCH & BUY/SELL) -->
+        <div id="view-tasks" class="section-view">
+            <div class="feature-card" style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:16px; padding:16px;">
+                <h3>🖼️ Smart NFT Task Miner</h3>
+                <p style="font-size:12px; color:var(--text-sub);">Requires minimum $50 balance. Search/Buy NFT, then sell to add profit.</p>
+                
+                <div class="nft-image-box" id="nft-box-icon">
+                    👑
+                    <div class="nft-badge" id="nft-tier-badge">VIP NFT</div>
+                </div>
+
+                <div style="font-size:13px; margin-bottom: 4px; font-weight: bold;" id="nft-title">Global Genesis NFT #709</div>
+                <div style="font-size:11px; color:var(--text-sub); margin-bottom: 12px;" id="nft-desc">Cost Value: Calculated from Balance</div>
+
+                <div class="search-status" id="search-status-text">Ready to start search task</div>
+
+                <button class="action-btn" id="nft-action-btn" onclick="handleNftTaskClick()">Start NFT Task (Search & Buy)</button>
             </div>
         </div>
 
-        <!-- Invite Friends Section -->
-        <div class="invite-card">
-            <div class="invite-header">
-                <div>
-                    <h3>Invite Friends</h3>
-                    <p>Earn rewards for every friend you invite</p>
+        <!-- WITHDRAW / WALLET SECTION WITH 15-DAY LOCK TIMER & $50 MINIMUM -->
+        <div id="view-wallet" class="section-view">
+            <div class="feature-card" style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:16px; padding:16px;">
+                <h3>📤 Request Withdrawal</h3>
+                <p style="font-size:12px; color:var(--text-sub);">Minimum withdrawal is $50.00. Funds are locked for 15 days following your deposit time.</p>
+                <div id="lock-timer-box" style="background: #1a1505; border: 1px solid var(--gold-primary); padding: 10px; border-radius: 8px; font-size: 11px; color: var(--gold-primary); margin-bottom: 12px; text-align: center;">
+                    Lock Status: <span id="timer-display">Checking status...</span>
                 </div>
-                <button class="invite-btn" onclick="alert('Invite link copied!')">Invite Now</button>
-            </div>
-            <div class="referral-box">
-                <span id="ref-link">https://t.me/globalnftbot?start=123456</span>
-                <span style="cursor: pointer;" onclick="navigator.clipboard.writeText('https://t.me/globalnftbot?start=123456'); alert('Link copied to clipboard!');">📋</span>
-            </div>
-        </div>
-
-        <!-- Earnings Overview -->
-        <div class="earnings-card">
-            <h3>Earnings Overview</h3>
-            <div class="earnings-grid">
-                <div class="earning-item">
-                    <span>Today's Earnings</span>
-                    <h4 style="color: var(--gold-primary);">0.00 <span style="font-size:9px;">USDT</span></h4>
-                </div>
-                <div class="earning-item">
-                    <span>This Week</span>
-                    <h4>0.00 <span style="font-size:9px;">USDT</span></h4>
-                </div>
-                <div class="earning-item">
-                    <span>This Month</span>
-                    <h4>0.00 <span style="font-size:9px;">USDT</span></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- TASKS SECTION -->
-    <div id="view-tasks" class="section-view">
-        <div class="card" style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:16px; padding:16px; margin-bottom:14px;">
-            <h3 style="margin-top:0; color:var(--gold-primary);">Daily Check-in & Tasks</h3>
-            <p style="font-size:12px; color:var(--text-sub);">Complete tasks below to boost your daily yield instantly.</p>
-            
-            <div style="background:#0a0a0a; padding:10px; border-radius:10px; margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <h4 style="margin:0; font-size:13px;">Daily Check-in Reward</h4>
-                    <span style="font-size:10px; color:var(--text-sub);">Claim your daily bonus</span>
-                </div>
-                <button class="card-btn" onclick="alert('Claimed daily check-in bonus successfully!')">Claim</button>
-            </div>
-
-            <div style="background:#0a0a0a; padding:10px; border-radius:10px; margin-top:8px; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <h4 style="margin:0; font-size:13px;">Join Telegram Channel</h4>
-                    <span style="font-size:10px; color:var(--text-sub);">Earn +0.50 USDT</span>
-                </div>
-                <button class="card-btn" onclick="alert('Redirecting to official Telegram channel...')">Verify</button>
-            </div>
-
-            <div style="background:#0a0a0a; padding:10px; border-radius:10px; margin-top:8px; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <h4 style="margin:0; font-size:13px;">Invite 3 Active Friends</h4>
-                    <span style="font-size:10px; color:var(--text-sub);">Earn +5.00 USDT</span>
-                </div>
-                <button class="card-btn" onclick="alert('Share link to complete task')">Share</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- WALLET SECTION -->
-    <div id="view-wallet" class="section-view">
-        <div class="wallet-card" style="margin-bottom:14px;">
-            <div class="wallet-info">
-                <span>Available Assets</span>
-                <h2>12.00 USDT</h2>
-                <p>Secured Web3 Vault</p>
-            </div>
-            <button class="recharge-btn" onclick="alert('Deposit window open')">Deposit</button>
-    </div>
+    
