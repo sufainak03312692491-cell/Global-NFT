@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global NFT Dashboard</title>
+    <title>Global NFT Market</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
@@ -26,102 +26,43 @@
             padding-bottom: 90px;
         }
 
-        /* Screen States */
         .screen { display: none; }
         .screen.active { display: block; }
 
-        /* Login Screen Styles */
-        .login-wrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 90vh;
-            padding: 10px;
-        }
-        .login-container {
+        /* Treasure NFT Style Registration Form */
+        .auth-container {
+            max-width: 380px;
+            margin: 20px auto;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
+            padding: 20px;
             box-sizing: border-box;
         }
-        .brand-header {
+        .auth-logo {
             text-align: center;
-            margin-bottom: 24px;
+            font-size: 36px;
+            margin-bottom: 8px;
         }
-        .brand-logo-large {
-            width: 50px;
-            height: 50px;
-            background: var(--gold-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin: 0 auto 10px auto;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-        }
-        .brand-header h1 {
-            margin: 0;
-            font-size: 20px;
+        .auth-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 800;
-            letter-spacing: 1px;
+            margin-bottom: 4px;
         }
-        .brand-header p {
-            margin: 4px 0 0 0;
-            font-size: 11px;
-            color: var(--text-sub);
-            letter-spacing: 0.5px;
-        }
-        .login-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-main);
-        }
-        .telegram-login-btn {
-            background-color: #229ed9;
-            color: #fff;
-            border: none;
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            cursor: pointer;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 12px rgba(34, 158, 217, 0.3);
-        }
-        .divider {
-            display: flex;
-            align-items: center;
+        .auth-subtitle {
             text-align: center;
-            color: var(--text-sub);
             font-size: 11px;
+            color: var(--text-sub);
             margin-bottom: 16px;
         }
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid var(--card-border);
+        .input-group {
+            margin-bottom: 10px;
         }
-        .divider::before { margin-right: 10px; }
-        .divider::after { margin-left: 10px; }
-        .form-group {
-            margin-bottom: 12px;
-        }
-        .form-group label {
+        .input-group label {
             display: block;
             font-size: 11px;
             color: var(--text-sub);
@@ -129,63 +70,35 @@
         }
         .input-field {
             width: 100%;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
             border: 1px solid var(--card-border);
             background: #0d1117;
             color: #fff;
             box-sizing: border-box;
-            font-size: 13px;
+            font-size: 12px;
         }
         .input-field:focus {
             border-color: var(--gold-primary);
             outline: none;
         }
-        .form-options {
+        .row-inline {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 11px;
-            margin-bottom: 16px;
-            color: var(--text-sub);
+            gap: 8px;
         }
-        .remember-me {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-        }
-        .forgot-password {
-            color: var(--gold-primary);
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .signin-btn {
-            background: var(--gold-btn-gradient);
-            color: #000;
+        .get-code-btn {
+            background: #238636;
+            color: #fff;
             border: none;
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 14px;
+            padding: 0 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 11px;
             cursor: pointer;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-        .create-account-btn {
-            background: transparent;
-            color: var(--gold-primary);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
+            white-space: nowrap;
         }
 
-        /* Dashboard Global Styles */
+        /* Dashboard Styles */
         .header {
             display: flex;
             justify-content: space-between;
@@ -217,54 +130,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 800;
-            letter-spacing: 0.5px;
         }
         .brand-title span {
             font-size: 9px;
             color: var(--text-sub);
-            letter-spacing: 1px;
             text-transform: uppercase;
         }
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .lang-selector {
-            background: #1a1a1a;
-            border: 1px solid var(--card-border);
-            color: var(--gold-primary);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-        }
-        .icon-btn {
-            background: #1a1a1a;
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .vip-avatar {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: linear-gradient(135deg, #1f1f1f, #121212);
-            border: 1px solid var(--gold-primary);
-            border-radius: 20px;
-            padding: 2px 8px;
-        }
-        .vip-avatar span {
-            font-size: 9px;
-            color: var(--gold-primary);
-            font-weight: bold;
-        }
-
         .hero-banner {
             background: linear-gradient(135deg, #16140f 0%, #1c1810 50%, #111 100%);
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -287,7 +158,6 @@
             margin: 0;
             font-size: 11px;
             color: var(--text-sub);
-            max-width: 180px;
         }
         .wallet-card {
             background: var(--card-bg);
@@ -299,16 +169,8 @@
             align-items: center;
             margin-bottom: 14px;
         }
-        .wallet-info span {
-            font-size: 12px;
-            color: var(--text-sub);
-        }
-        .wallet-info h2 {
-            margin: 4px 0;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
+        .wallet-info span { font-size: 12px; color: var(--text-sub); }
+        .wallet-info h2 { margin: 4px 0; font-size: 24px; font-weight: 700; color: var(--text-main); }
         .recharge-btn {
             background: var(--gold-btn-gradient);
             color: #000;
@@ -319,80 +181,40 @@
             font-size: 13px;
             cursor: pointer;
         }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
         .feature-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 16px;
             padding: 14px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            margin-bottom: 14px;
         }
-        .feature-card h3 {
-            margin: 0 0 4px 0;
-            font-size: 14px;
-            font-weight: 700;
-        }
-        .feature-card p {
-            margin: 0 0 10px 0;
-            font-size: 10px;
-            color: var(--text-sub);
-        }
-        .card-btn {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: var(--gold-primary);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 600;
-            cursor: pointer;
-            width: fit-content;
-        }
-
         .action-btn {
             background: var(--gold-btn-gradient);
             color: #000;
             border: none;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 10px;
             font-weight: bold;
             width: 100%;
             cursor: pointer;
             font-size: 14px;
         }
-        .action-btn:disabled {
-            background: #333;
-            color: #777;
-            cursor: not-allowed;
-        }
-
-        /* NFT Trading / Searching Styles */
         .nft-image-box {
             width: 100%;
-            height: 160px;
+            height: 150px;
             background: linear-gradient(135deg, #1a1810, #0d0d0d);
             border: 1px solid rgba(212, 175, 55, 0.4);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            margin-bottom: 12px;
+            font-size: 50px;
+            margin-bottom: 10px;
             position: relative;
-            overflow: hidden;
         }
         .nft-badge {
             position: absolute;
-            top: 8px;
-            right: 8px;
+            top: 8px; right: 8px;
             background: rgba(212, 175, 55, 0.2);
             border: 1px solid var(--gold-primary);
             color: var(--gold-primary);
@@ -406,86 +228,78 @@
             font-size: 12px;
             color: var(--gold-primary);
             margin: 8px 0;
-            min-height: 18px;
             font-weight: 600;
         }
-
         .nav-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #0d0d0d;
-            border-top: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-around;
-            padding: 8px 0;
-            z-index: 100;
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: #0d0d0d; border-top: 1px solid var(--card-border);
+            display: flex; justify-content: space-around; padding: 8px 0; z-index: 100;
         }
         .nav-item {
-            background: none;
-            border: none;
-            color: var(--text-sub);
-            font-size: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            cursor: pointer;
+            background: none; border: none; color: var(--text-sub);
+            font-size: 10px; display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer;
         }
-        .nav-item.active {
-            color: var(--gold-primary);
-        }
+        .nav-item.active { color: var(--gold-primary); }
         .section-view { display: none; }
         .section-view.active { display: block; }
     </style>
 </head>
 <body>
 
-    <!-- 1. LOGIN SCREEN -->
-    <div id="screen-login" class="screen active">
-        <div class="login-wrapper">
-            <div class="login-container">
-                <div class="brand-header">
-                    <div class="brand-logo-large">🌐</div>
-                    <h1>GLOBAL NFT</h1>
-                    <p>BUILD TODAY, EARN TOMORROW</p>
-                </div>
+    <!-- GLOBAL NFT REGISTRATION SCREEN -->
+    <div id="screen-auth" class="screen active">
+        <div class="auth-container">
+            <div class="auth-logo">🌐</div>
+            <div class="auth-title">GLOBAL NFT REGISTER</div>
+            <div class="auth-subtitle">Create your account properly to claim bonus</div>
 
-                <div class="login-title">Welcome Back</div>
-
-                <button class="telegram-login-btn" onclick="handleLoginSuccess()">
-                    <span>🔵</span> Login with Telegram
-                </button>
-
-                <div class="divider">or sign in with credentials</div>
-
-                <div class="form-group">
-                    <label>Email / Username</label>
-                    <input type="text" id="login-user" class="input-field" placeholder="Enter username or email">
-                </div>
-
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="login-pass" class="input-field" placeholder="Enter password">
-                </div>
-
-                <div class="form-options">
-                    <label class="remember-me">
-                        <input type="checkbox" id="remember"> Remember Me
-                    </label>
-                    <span class="forgot-password" onclick="alert('Password reset link sent!')">Forgot Password?</span>
-                </div>
-
-                <button class="signin-btn" onclick="handleLoginSuccess()">Sign In</button>
-                <button class="create-account-btn" onclick="alert('Opening registration portal...')">Create Account</button>
+            <div class="input-group">
+                <label>User Full Name / Username</label>
+                <input type="text" id="reg-username" class="input-field" placeholder="Enter your username">
             </div>
+
+            <div class="input-group">
+                <label>Login Password (Strong)</label>
+                <input type="password" id="reg-password" class="input-field" placeholder="Enter secure password">
+            </div>
+
+            <div class="input-group">
+                <label>Mobile Number</label>
+                <div class="row-inline">
+                    <select id="reg-country" class="input-field" style="width: 80px;">
+                        <option value="+92">+92</option>
+                        <option value="+1">+1</option>
+                        <option value="+44">+44</option>
+                        <option value="+971">+971</option>
+                    </select>
+                    <input type="tel" id="reg-phone" class="input-field" placeholder="Phone number">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Gmail Address</label>
+                <div class="row-inline">
+                    <input type="email" id="reg-email" class="input-field" placeholder="name@gmail.com">
+                    <button class="get-code-btn" onclick="sendEmailCode()">Get</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Email Verification Code <span id="code-hint-display" style="color:var(--gold-primary);"></span></label>
+                <input type="text" id="reg-code" class="input-field" placeholder="Enter 4-digit verification code">
+            </div>
+
+            <div class="input-group">
+                <label>Referral Code (Optional)</label>
+                <input type="text" id="reg-ref" class="input-field" placeholder="Enter invite code">
+            </div>
+
+            <button class="action-btn" style="margin-top: 10px;" onclick="completeSignUp()">Sign Up Now</button>
         </div>
     </div>
 
-    <!-- 2. MAIN DASHBOARD SCREENS CONTAINER -->
+    <!-- MAIN DASHBOARD -->
     <div id="screen-dashboard" class="screen">
-        <!-- TOP HEADER -->
         <div class="header">
             <div class="brand-box">
                 <div class="brand-logo">🌐</div>
@@ -494,58 +308,40 @@
                     <span>BUILD TODAY, EARN TOMORROW</span>
                 </div>
             </div>
-            <div class="header-actions">
-                <div class="lang-selector">English ▾</div>
-                <div class="icon-btn">🔔</div>
-                <div class="vip-avatar">
-                    <span>VIP1</span>
-                    <span>👤</span>
-                </div>
-            </div>
+            <div style="font-size: 11px; color: var(--gold-primary);" id="display-username">Trader</div>
         </div>
 
-        <!-- HOME SECTION -->
+        <!-- HOME -->
         <div id="view-home" class="section-view active">
             <div class="hero-banner">
                 <div class="hero-content">
                     <h2>GLOBAL NFT</h2>
                     <p>EARN MORE. OWN MORE. BUILD YOUR FUTURE.</p>
                 </div>
-                <div style="font-size: 40px;">🪙</div>
+                <div style="font-size: 36px;">🪙</div>
             </div>
 
             <div class="wallet-card">
                 <div class="wallet-info">
                     <span>Total Balance (USDT)</span>
-                    <h2 id="user-balance">$112.00</h2>
+                    <h2 id="user-balance">$100.00</h2>
                 </div>
                 <button class="recharge-btn" onclick="switchTab('deposit')">Recharge</button>
             </div>
 
-            <div class="grid-2">
-                <div class="feature-card">
-                    <div>
-                        <h3>Daily Tasks</h3>
-                        <p>Complete check-ins and earn rewards</p>
-                    </div>
-                    <button class="card-btn" onclick="switchTab('tasks')">Go Now</button>
-                </div>
-                <div class="feature-card">
-                    <div>
-                        <h3>Global NFT</h3>
-                        <p>Stake NFT Earn USDT Every day</p>
-                    </div>
-                    <button class="card-btn" onclick="switchTab('tasks')">Trade NFTs</button>
-                </div>
+            <div class="feature-card">
+                <h3>Daily Tasks</h3>
+                <p style="font-size: 11px; color: var(--text-sub);">Complete Global NFT tasks daily to generate profits.</p>
+                <button class="action-btn" style="padding:8px;" onclick="switchTab('tasks')">Go to Tasks</button>
             </div>
         </div>
 
-        <!-- DEPOSIT SECTION -->
+        <!-- DEPOSIT -->
         <div id="view-deposit" class="section-view">
-            <div class="feature-card" style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:16px; padding:16px;">
+            <div class="feature-card">
                 <h3>📥 Deposit USDT (TRC-20)</h3>
-                <p style="font-size:11px; color:var(--text-sub);">Minimum deposit is $50.00 to activate work tasks. Includes $100 3-day bonus.</p>
-                <div style="background: #090909; padding: 10px; border-radius: 8px; font-size: 11px; word-break: break-all; color: var(--gold-primary); margin-bottom: 10px;">
+                <p style="font-size:11px; color:var(--text-sub);">Deposit min $50 to unlock work tasks and activate withdrawals.</p>
+                <div style="background: #090909; padding: 10px; border-radius: 8px; font-size: 11px; color: var(--gold-primary); margin-bottom: 10px; word-break: break-all;">
                     T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb
                 </div>
                 <input type="number" id="dep-amount" class="input-field" placeholder="Deposit Amount ($ min 50)">
@@ -554,32 +350,157 @@
             </div>
         </div>
 
-        <!-- TASKS SECTION (NFT SEARCH & BUY/SELL) -->
+        <!-- TASKS -->
         <div id="view-tasks" class="section-view">
-            <div class="feature-card" style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:16px; padding:16px;">
-                <h3>🖼️ Smart NFT Task Miner</h3>
-                <p style="font-size:12px; color:var(--text-sub);">Requires minimum $50 balance. Search/Buy NFT, then sell to add profit.</p>
+            <div class="feature-card">
+                <h3>🖼️ Global NFT Smart Miner</h3>
+                <p style="font-size:11px; color:var(--text-sub);">Search and trade Global NFT to lock fixed profit.</p>
                 
                 <div class="nft-image-box" id="nft-box-icon">
                     👑
-                    <div class="nft-badge" id="nft-tier-badge">VIP NFT</div>
+                    <div class="nft-badge">Global NFT</div>
                 </div>
-
-                <div style="font-size:13px; margin-bottom: 4px; font-weight: bold;" id="nft-title">Global Genesis NFT #709</div>
-                <div style="font-size:11px; color:var(--text-sub); margin-bottom: 12px;" id="nft-desc">Cost Value: Calculated from Balance</div>
-
                 <div class="search-status" id="search-status-text">Ready to start search task</div>
-
                 <button class="action-btn" id="nft-action-btn" onclick="handleNftTaskClick()">Start NFT Task (Search & Buy)</button>
             </div>
         </div>
 
-        <!-- WITHDRAW / WALLET SECTION WITH 15-DAY LOCK TIMER & $50 MINIMUM -->
+        <!-- WITHDRAW -->
         <div id="view-wallet" class="section-view">
-            <div class="feature-card" style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:16px; padding:16px;">
+            <div class="feature-card">
                 <h3>📤 Request Withdrawal</h3>
-                <p style="font-size:12px; color:var(--text-sub);">Minimum withdrawal is $50.00. Funds are locked for 15 days following your deposit time.</p>
-                <div id="lock-timer-box" style="background: #1a1505; border: 1px solid var(--gold-primary); padding: 10px; border-radius: 8px; font-size: 11px; color: var(--gold-primary); margin-bottom: 12px; text-align: center;">
-                    Lock Status: <span id="timer-display">Checking status...</span>
-                </div>
-    
+                <p style="font-size:11px; color:var(--text-sub);">Funds locked for 15 days after deposit. Admin approval required.</p>
+                <div id="timer-display" style="font-size:11px; color:var(--gold-primary); margin-bottom:10px; text-align:center;">Checking status...</div>
+                <input type="number" id="wd-amount" class="input-field" placeholder="Withdraw Amount ($ min 50)">
+                <input type="text" id="wd-address" class="input-field" placeholder="TRC20 Wallet Address">
+                <button class="action-btn" id="withdraw-submit-btn" style="background:#238636; color:#fff;" onclick="submitWithdrawal()" disabled>Withdraw Locked</button>
+            </div>
+        </div>
+
+        <!-- PROFILE -->
+        <div id="view-profile" class="section-view">
+            <div class="feature-card">
+                <h3>👤 Account Information</h3>
+                <p style="font-size:12px; color:var(--text-sub);">Username: <span id="prof-name">-</span></p>
+                <p style="font-size:12px; color:var(--text-sub);">Email: <span id="prof-email">-</span></p>
+                <p style="font-size:12px; color:var(--text-sub);">Deposit Status: <span id="prof-dep">No deposit</span></p>
+            </div>
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="nav-bar">
+            <button class="nav-item active" id="nav-home" onclick="switchTab('home')"><span>🏠</span><span>Home</span></button>
+            <button class="nav-item" id="nav-tasks" onclick="switchTab('tasks')"><span>📋</span><span>Tasks</span></button>
+            <button class="nav-item" id="nav-deposit" onclick="switchTab('deposit')"><span>📥</span><span>Deposit</span></button>
+            <button class="nav-item" id="nav-wallet" onclick="switchTab('wallet')"><span>📤</span><span>Withdraw</span></button>
+            <button class="nav-item" id="nav-profile" onclick="switchTab('profile')"><span>👤</span><span>Profile</span></button>
+        </div>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+
+        let generatedCode = "";
+        let userBalance = 100.00;
+        let isDeposited = false;
+        let depositTime = null;
+        let nftState = 'READY';
+        let currentNftCost = 0;
+        let currentProfit = 0;
+
+        function sendEmailCode() {
+            const email = document.getElementById('reg-email').value.trim();
+            if(!email.includes('@gmail.com')) {
+                alert('Please enter a valid Gmail address.');
+                return;
+            }
+            generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
+            document.getElementById('code-hint-display').innerText = `(Code: ${generatedCode})`;
+            alert(`[Simulation]: Verification code sent to ${email}. Code: ${generatedCode}`);
+        }
+
+        function completeSignUp() {
+            const username = document.getElementById('reg-username').value.trim();
+            const password = document.getElementById('reg-password').value.trim();
+            const phone = document.getElementById('reg-phone').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const code = document.getElementById('reg-code').value.trim();
+
+            if(!username || !password || !phone || !email || !code) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+            if(code !== generatedCode) {
+                alert('Incorrect email verification code.');
+                return;
+            }
+
+            document.getElementById('screen-auth').classList.remove('active');
+            document.getElementById('screen-dashboard').classList.add('active');
+
+            document.getElementById('display-username').innerText = username;
+            document.getElementById('prof-name').innerText = username;
+            document.getElementById('prof-email').innerText = email;
+            updateDashboard();
+        }
+
+        function updateDashboard() {
+            document.getElementById('user-balance').innerText = `$${userBalance.toFixed(2)}`;
+            checkLockStatus();
+        }
+
+        function checkLockStatus() {
+            const timerDisplay = document.getElementById('timer-display');
+            const withdrawBtn = document.getElementById('withdraw-submit-btn');
+
+            if(!isDeposited) {
+                timerDisplay.innerText = 'Deposit $50+ required to unlock withdrawals.';
+                withdrawBtn.disabled = true;
+                return;
+            }
+
+            const fifteenDays = 15 * 24 * 60 * 60 * 1000;
+            const remaining = fifteenDays - (Date.now() - depositTime);
+
+            if(remaining <= 0) {
+                timerDisplay.innerText = '15-Day lock complete! Ready for admin approval.';
+                withdrawBtn.disabled = false;
+                withdrawBtn.style.background = '#238636';
+            } else {
+                const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                timerDisplay.innerText = `Withdrawal locked: ${days}d ${hours}h remaining`;
+                withdrawBtn.disabled = true;
+            }
+        }
+
+        setInterval(checkLockStatus, 1000);
+
+        function handleNftTaskClick() {
+            const statusText = document.getElementById('search-status-text');
+            const actionBtn = document.getElementById('nft-action-btn');
+            const nftBox = document.getElementById('nft-box-icon');
+
+            if(!isDeposited) {
+                alert('You must deposit at least $50 first to unlock task mining!');
+                switchTab('deposit');
+                return;
+            }
+
+            if(nftState === 'READY') {
+                nftState = 'SEARCHING';
+                actionBtn.disabled = true;
+                statusText.innerText = '🔍 Searching market nodes...';
+                nftBox.innerHTML = '🔄<div class="nft-badge">Searching</div>';
+
+                setTimeout(() => {
+                    currentNftCost = 30.00;
+                    currentProfit = 4.50;
+                    userBalance -= currentNftCost;
+                    updateDashboard();
+
+                    nftState = 'BOUGHT';
+                    statusText.innerText = `✅ Global NFT Bought! Cost: $${currentNftCost}. Click to sell for profit.`;
+                    nftBox.innerHTML = '💎<di
