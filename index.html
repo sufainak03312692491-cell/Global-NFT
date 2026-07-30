@@ -267,7 +267,7 @@
                     <label>Gmail Address (Unique restriction check)</label>
                     <div class="row-inline">
                         <input type="email" id="reg-email" class="input-field" placeholder="name@gmail.com">
-                        <button type="button" class="get-code-btn" onclick="sendSecureCode()">Get Code</button>
+                        <button type="button" class="get-code-btn" id="btn-get-code">Get Code</button>
                     </div>
                 </div>
                 <div class="input-group">
@@ -278,8 +278,8 @@
                     <label>Secure Password</label>
                     <input type="password" id="reg-password" class="input-field" placeholder="Create strong password">
                 </div>
-                <button type="button" class="action-btn" style="margin-top: 6px;" onclick="registerUser()">Complete Registration</button>
-                <div class="auth-switch" onclick="toggleAuthMode('login')">Already have an account? <span>Login here</span></div>
+                <button type="button" class="action-btn" id="btn-register" style="margin-top: 6px;">Complete Registration</button>
+                <div class="auth-switch" id="switch-to-login">Already have an account? <span>Login here</span></div>
             </div>
 
             <div id="form-login-box" style="display:none;">
@@ -291,8 +291,8 @@
                     <label>Password</label>
                     <input type="password" id="login-password" class="input-field" placeholder="Enter password">
                 </div>
-                <button type="button" class="action-btn" style="margin-top: 6px;" onclick="loginUser()">Secure Login</button>
-                <div class="auth-switch" onclick="toggleAuthMode('register')">New user? <span>Register now</span></div>
+                <button type="button" class="action-btn" id="btn-login" style="margin-top: 6px;">Secure Login</button>
+                <div class="auth-switch" id="switch-to-register">New user? <span>Register now</span></div>
             </div>
         </div>
     </div>
@@ -472,4 +472,8 @@
 
             let existingUsers = JSON.parse(localStorage.getItem('global_nft_users') || "{}");
             if(!existingUsers[email] || existingUsers[email].password !== password) {
-                alert('Invalid Gmail address or passw
+                alert('Invalid Gmail address or password.');
+                return;
+            }
+
+  
