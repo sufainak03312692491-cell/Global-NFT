@@ -1,4 +1,8 @@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
+// Initialize EmailJS with your Public Key
+emailjs.init("qjxvR3dIIlRvcnhXgs");
+
 let generatedCode = "";
 
 function getCode() {
@@ -10,11 +14,26 @@ function getCode() {
         return;
     }
 
+    // Generate 4-digit code
     generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
 
     document.getElementById("code-show").innerText = "(Code: " + generatedCode + ")";
 
-    alert("Verification Code Generated Successfully: " + generatedCode);
+    // Prepare template parameters for EmailJS
+    const templateParams = {
+        to_email: emailField,
+        passcode: generatedCode
+    };
+
+    // Send the email via EmailJS
+    emailjs.send("service_6azrj1h", "template_d2ry4oq", templateParams)
+        .then(function(response) {
+            console.log("SUCCESS!", response.status, response.text);
+            alert("Verification Code sent successfully to your Gmail!");
+        }, function(error) {
+            console.log("FAILED...", error);
+            alert("Failed to send email. Please check your network.");
+        });
 }
 
 function register() {
